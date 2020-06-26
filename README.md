@@ -16,10 +16,8 @@ First pass at noise simulation and false positives
 
 Very much a work in progress. But I seem to have `find_tags_unifile`
 running. However, I don’t think that its defaults match what is
-currently run on the Motus server (`find_tags_motus`?). Also, changing
-some of tagfinder’s parameters doesn’t seem to produce the expected
-result. I don’t have time to illustrate, so you may need to mess around
-with it to see for yourselves.
+currently run on the Motus server (`find_tags_motus`?) so I’ve attempted
+to fix that.
 
 ### Generate some noise
 
@@ -69,7 +67,7 @@ tf <- readr::read_csv(tf)
 nrow(tf)
 ```
 
-    ## [1] 10294
+    ## [1] 10296
 
 ``` r
 head(tf)
@@ -79,11 +77,11 @@ head(tf)
     ##     ant     ts fullID  freq freq.sd   sig sig.sd noise run.id pos.in.run    slop
     ##   <dbl>  <dbl> <chr>  <dbl>   <dbl> <dbl>  <dbl> <dbl>  <dbl>      <dbl>   <dbl>
     ## 1     1 1.59e9 USFWS~     4       0   -40 0.0243   -50      6          1 0.001  
-    ## 2     1 1.59e9 USFWS~     4       0   -40 0.0243   -50     18          1 0.0019 
+    ## 2     1 1.59e9 USFWS~     4       0   -40 0.0243   -50     18          1 0.002  
     ## 3     1 1.59e9 SCDNR~     4       0   -40 0.0243   -50     21          1 0.00175
-    ## 4     1 1.59e9 SCDNR~     4       0   -40 0.0243   -50     55          1 0.00355
-    ## 5     1 1.59e9 USFWS~     4       0   -40 0.0243   -50     62          1 0.00155
-    ## 6     1 1.59e9 SCDNR~     4       0   -40 0.0243   -50     65          1 0.0026 
+    ## 4     1 1.59e9 SCDNR~     4       0   -40 0.0243   -50     55          1 0.00345
+    ## 5     1 1.59e9 USFWS~     4       0   -40 0.0243   -50     62          1 0.00145
+    ## 6     1 1.59e9 SCDNR~     4       0   -40 0.0243   -50     65          1 0.0015 
     ## # ... with 2 more variables: burst.slop <dbl>, ant.freq <dbl>
 
 In looking through the [tagfinder
@@ -103,7 +101,7 @@ tf_motus <- tag_finder("Data/tag_db.sqlite", "Data/simulated_sg_noise.csv")
 nrow(tf_motus)
 ```
 
-    ## [1] 106
+    ## [1] 110
 
 For funsies, let’s simulate 4 hours of very noisy data and see what
 comes out by default…

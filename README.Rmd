@@ -20,7 +20,7 @@ source("R/tag_finder.R")
 
 ## First pass at noise simulation and false positives
 
-Very much a work in progress. But I seem to have `find_tags_unifile` running. However, I don't think that its defaults match what is currently run on the Motus server (`find_tags_motus`?). Also, changing some of tagfinder's parameters doesn't seem to produce the expected result. I don't have time to illustrate, so you may need to mess around with it to see for yourselves.
+Very much a work in progress. But I seem to have `find_tags_unifile` running. However, I don't think that its defaults match what is currently run on the Motus server (`find_tags_motus`?) so I've attempted to fix that.
 
 ### Generate some noise
 
