@@ -56,12 +56,14 @@ In looking through the [tagfinder repo](https://github.com/MotusWTS/find_tags), 
 ```{r use-tfmotus-defaults}
 tf_motus <- tag_finder("Data/tag_db.sqlite", "Data/simulated_sg_noise.csv")
 nrow(tf_motus)
+head(tf)
 ```
 
 For funsies, let's simulate 4 hours of very noisy data and see what comes out by default...
 
 ```{r noisy, cache = TRUE}
 simulate_noise(4, noise_rate = 100, seed = 2020, out = "Data/very_noisy.csv")
+# Fair warning: 3+ minutes on a relatively decent machine
 system.time(tf_noisy <- tag_finder("Data/tag_db.sqlite", "Data/very_noisy.csv"))
 nrow(tf_noisy)
 
